@@ -1,16 +1,13 @@
-# Java Heap Space vs Stack – Memory Allocation in Java
-
-Sometime back I wrote a couple of posts about Java Garbage Collection and Java is Pass by Value, after that I got a lot of emails to explain about Java Heap Space, Java Stack Memory, Memory Allocation in Javaand what are the differences between them.
+# Java Heap Space vs Stack – Распределение памяти в Java
  
-You will see a lot of reference to Heap and Stack memory in Java, Java EE books and tutorials but hardly complete explanation of what is heap and stack memory in terms of a program.
-
 ## Java Heap Space
-Java Heap space is used by java runtime to allocate memory to Objects and JRE classes. Whenever we create any object, it’s always created in the Heap space. Garbage Collection runs on the heap memory to free the memory used by objects that doesn’t have any reference. Any object created in the heap space has global access and can be referenced from anywhere of the application.
+Java Heap используется в Java Runtime для выделения памяти для объектов и классов JRE. Всякий раз, когда мы создаем какой-либо объект, он всегда создается в динамической памяти пространства. Сбор мусора выполняется на динамической памяти, чтобы освободить память, используемую объектами, которые не имеют каких-либо ссылок. Любой объект, созданный в простанстве хипа имеет глобальный доступ и можно ссылаться из любого места приложения.
+heap - куча
+
 
 ## Java Stack Memory
-Java Stack memory is used for execution of a thread. They contain method specific values that are short-lived and references to other objects in the heap that are getting referred from the method. Stack memory is always referenced in LIFO (Last-In-First-Out) order. Whenever a method is invoked, a new block is created in the stack memory for the method to hold local primitive values and reference to other objects in the method. As soon as method ends, the block becomes unused and become available for next method.
-Stack memory size is very less compared to Heap memory.
-Let’s understand the Heap and Stack memory usage with a simple program.
+Stack  используется для выполнения потоков. Они содержат конкретные значения методов, которые недолговечны и ссылки на другие объекты в куче(хипе), которые получают из указанных методов. Стек всегда ссылааеться в LIFO (Last-In-First-Out) порядка. Всякий раз, когда вызывается метод, новый блок создается в памяти стека для метода где храняться  значения локальных примитивов и ссылки на другие объекты, в методе. Как только метод заканчивается, блок становится неиспользованной и становятся доступными для следующего метода.
+Размер памяти стека намного меньше по сравнению с динамической памятью.
 
 ```java
   public class Memory {
@@ -45,11 +42,11 @@ Let’s go through the steps of execution of the program.
 ## Difference between Java Heap Space and Stack Memory
 Based on the above explanations, we can easily conclude following differences between Heap and Stack memory.
 
-1.  Heap memory is used by all the parts of the application whereas stack memory is used only by one thread of execution.
+1.  Heap память используется всеми частями приложения, тогда как стек памяти используется только одним потоком исполнения.
 
-2.  Whenever an object is created, it’s always stored in the Heap space and stack memory contains the reference to it. Stack memory only contains local primitive variables and reference variables to objects in heap space.
+2.  Всякий раз, когда создается объект, он всегда хранится в пространстве хипа и стек содержит ссылку на него. Стек памяти содержит только локальные переменные и примитивные ссылочные переменные на объекты в хипе.
 
-3. ol	Objects stored in the heap are globally accessible whereas stack memory can’t be accessed by other threads.
+3.  Объекты, хранящиеся в хипе доступны везде в то время как стек не может получить доступ к другим потокам.
 
 4.	Memory management in stack is done in LIFO manner whereas it’s more complex in Heap memory because it’s used globally. Heap memory is divided into Young-Generation, Old-Generation etc, more details at Java Garbage Collection.
 
@@ -61,8 +58,5 @@ Based on the above explanations, we can easily conclude following differences be
 
 8.	Stack memory size is very less when compared to Heap memory. Because of simplicity in memory allocation (LIFO), stack memory is very fast when compared to heap memory.
 	
-That’s all for Java Heap Space vs Stack Memory in terms of java application, I hope it will clear your doubts regarding memory allocation when any java program is executed.
-
-I have made a video tutorial for java heap space and stack memory, you should watch it to clarify any doubts.
+Я сделал видео-учебник для Java пространство кучи и стека памяти, вы должны смотреть, чтобы уточнить какие-либо сомнения.
 https://www.youtube.com/watch?v=_y7k_0edvuY
-
