@@ -30,7 +30,7 @@ Let’s understand the Heap and Stack memory usage with a simple program.
 
 Below image shows the Stack and Heap memory with reference to above program and how they are being used to store primitive, Objects and reference variables.
 
-![Let’s go through the steps of execution of the program](http://webdesign.ru.net/images/Heydon_min.jpg)
+![JavaRuntimeMemory](https://github.com/Oleiva/Java-Interview-Questions/blob/EN/images/JavaHeapSpaceVsStack/JavaRuntimeMemory.png)
  
 Let’s go through the steps of execution of the program.
 
@@ -61,8 +61,8 @@ Based on the above explanations, we can easily conclude following differences be
 
 8.	Stack memory size is very less when compared to Heap memory. Because of simplicity in memory allocation (LIFO), stack memory is very fast when compared to heap memory.
 	
-
 That’s all for Java Heap Space vs Stack Memory in terms of java application, I hope it will clear your doubts regarding memory allocation when any java program is executed.
+
 I have made a video tutorial for java heap space and stack memory, you should watch it to clarify any doubts.
-FILED UNDER: INTERVIEW QUESTIONS, JAVA
+https://www.youtube.com/watch?v=_y7k_0edvuY
 
