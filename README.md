@@ -1,8 +1,9 @@
 # Java Interview Questions
+
+ [![Java Interview Questions](https://github.com/Oleiva/Java-Interview-Questions/blob/master/images/Racy-junior-pro.jpg)](https://github.com/Oleiva/Java-Interview-Questions)
+
 I have written a lot of posts for java interview questions, this is a placeholder for all those posts. You can bookmark this post and come again in future to see the new additions.
  
-## Java Interview Questions
-
 ## 1. Core Java Interview Questions and Answers
 Core Java is the starting point of any Java interview. Whether you are fresher or experienced in java, having a strong grip on Core Java is very important to clear the interview. This article lists down some of the commonly asked core java interview questions with answers.
 
