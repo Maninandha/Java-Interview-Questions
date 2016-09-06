@@ -44,7 +44,7 @@ Some tricky questions to test your programming skills, also check out java trick
 ## 12.	Java 7 Catch Block
 Java 7 catch block has been improved to catch multiple exceptions in a single block, a good improvement for making our catch block code small when we needed to catch a lot of exceptions.
 
-## 13.	Java Heap Memory vs Stack Memory
+## 13.	[Java Heap Memory vs Stack Memory](https://github.com/Oleiva/Java-Interview-Questions/blob/EN/JavaHeapSpaceVsStack.md)
 JVM runtime memory is divided into heap memory and stack memory. An important article explaining the difference between Heap and Stack memory through program. I recently published a YouTube video too, make sure to watch that for better understanding.
 
 ## 14.	Java is Pass By Value or Pass by Reference
