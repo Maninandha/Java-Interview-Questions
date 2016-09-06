@@ -3,27 +3,34 @@ I have written a lot of posts for java interview questions, this is a placeholde
  
 ## Java Interview Questions
 
-Java ClassLoader
-JULY 16, 2016 BY PANKAJ 5 COMMENTS
+#  Java ClassLoader
+
 Java ClassLoader is one of the crucial but rarely used components of Java in Project Development. Personally I have never extended ClassLoader in any of my projects but the idea of having my own ClassLoader that can customize the Java Class Loading thrills me.
 Java ClassLoader
  
 This article will provide an overview of Java ClassLoader and then move forward to create a custom ClassLoader in Java.
-What is Java ClassLoader?
+## What is Java ClassLoader?
 We know that Java Program runs on Java Virtual Machine (JVM). When we compile a Java Class, it transforms it in the form of bytecode that is platform and machine independent compiled program and store it as a .class file. After that when we try to use a Class, Java ClassLoader loads that class into memory.
+
 There are three types of built-in ClassLoader in Java:
-1.	Bootstrap Class Loader – It loads JDK internal classes, typically loads rt.jar and other core classes for example java.lang.* package classes
-2.	Extensions Class Loader – It loads classes from the JDK extensions directory, usually $JAVA_HOME/lib/ext directory.
-3.	System Class Loader – It loads classes from the current classpath that can be set while invoking a program using -cp or -classpath command line options.
-Java ClassLoader are hierarchical and whenever a request is raised to load a class, it delegates it to its parent and in this way uniqueness is maintained in the runtime environment. If the parent class loader doesn’t find the class then the class loader itself tries to load the class.
+
+1.  Bootstrap Class Loader â€“ It loads JDK internal classes, typically loads rt.jar and other core classes for example java.lang.* package classes
+2.  Extensions Class Loader â€“ It loads classes from the JDK extensions directory, usually $JAVA_HOME/lib/ext directory.
+3.  System Class Loader â€“ It loads classes from the current classpath that can be set while invoking a program using -cp or -classpath command line options.
+Java ClassLoader are hierarchical and whenever a request is raised to load a class, it delegates it to its parent and in this way uniqueness is maintained in the runtime environment. If the parent class loader doesnâ€™t find the class then the class loader itself tries to load the class.
 Lets understand this by executing the below java program:
-ClassLoaderTest.java
+
+``````scss /* Ð¸Ð»Ð¸ css */
+@import "bower_components/tree-normalize/generic.normalize";
+h1 {
+ font-size:1.5em;
+ font-weight: 300;
+}
+
+    ClassLoaderTest.java
 package com.journaldev.classloader;
-
 public class ClassLoaderTest {
-
 	public static void main(String[] args) {
-
 		System.out.println("class loader for HashMap: "
 				+ java.util.HashMap.class.getClassLoader());
 		System.out.println("class loader for DNSNameService: "
@@ -31,12 +38,10 @@ public class ClassLoaderTest {
 						.getClassLoader());
 		System.out.println("class loader for this class: "
 				+ ClassLoaderTest.class.getClassLoader());
-
 		System.out.println(com.mysql.jdbc.Blob.class.getClassLoader());
-
 	}
-
 }
+```
 Output of the above java classloader example program is:
 class loader for HashMap: null
 class loader for DNSNameService: sun.misc.Launcher$ExtClassLoader@7c354093
@@ -46,12 +51,12 @@ As you can see that java.util.HashMap ClassLoader is coming as null that reflect
 When we are trying to load HashMap, our System ClassLoader delegates it to the Extension ClassLoader, which in turns delegates it to Bootstrap ClassLoader that found the class and load it in JVM.
 The same process is followed for DNSNameService class but Bootstrap ClassLoader is not able to locate it since its in $JAVA_HOME/lib/ext/dnsns.jar and hence gets loaded by Extensions Class Loader. Note that Blob class is included in the MySql JDBC Connector jar (mysql-connector-java-5.0.7-bin.jar) that I have included in the build path of the project before executing it and its also getting loaded by System Class Loader.
 One more important point to note is that Classes loaded by a child class loader have visibility into classes loaded by its parent class loaders. So classes loaded by System ClassLoader have visibility into classes loaded by Extensions and Bootstrap ClassLoader.
-If there are sibling class loaders then they can’t access classes loaded by each other.
+If there are sibling class loaders then they canâ€™t access classes loaded by each other.
 Why write a Custom ClassLoader in Java?
 Java default ClassLoader can load files from local file system that is good enough for most of the cases. But if you are expecting a class at the runtime or from FTP server or via third party web service at the time of loading the class then you have to extend the existing class loader. For example, AppletViewers load the classes from remote web server.
 How does Java ClassLoader Work?
 When JVM requests for a class, it invokes loadClass function of the ClassLoader by passing the fully classified name of the Class.
-loadClass function calls for findLoadedClass() method to check that the class has been already loaded or not. It’s required to avoid loading the class multiple times.
+loadClass function calls for findLoadedClass() method to check that the class has been already loaded or not. Itâ€™s required to avoid loading the class multiple times.
 If the Class is not already loaded then it will delegate the request to parent ClassLoader to load the class.
 If the parent ClassLoader is not finding the Class then it will invoke findClass() method to look for the classes in the file system.
 Java Custom ClassLoader
@@ -375,5 +380,5 @@ Loading Class 'com.mysql.jdbc.Blob'
 sun.misc.Launcher$AppClassLoader@2f94ca6c
 Pankaj$
 Refer this email archive where Tim Quinn is also facing the same issue.
-That’s all for Java ClassLoader and java custom class loader example.
+Thatâ€™s all for Java ClassLoader and java custom class loader example.
 FILED UNDER: INTERVIEW QUESTIONS, JAVA
